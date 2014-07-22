@@ -96,8 +96,8 @@ End Class
 Class Startup
     Public Sub Configuration(app As IAppBuilder)
 
-        'app.UseFileServer(New FileServerOptions() With {.FileSystem = New PhysicalFileSystem(GetRootDirectory()), .EnableDirectoryBrowsing = True, .RequestPath = New Microsoft.Owin.PathString("/html")})
-
+        app.UseFileServer(New FileServerOptions() With {.FileSystem = New PhysicalFileSystem(GetRootDirectory()), .EnableDirectoryBrowsing = True, .RequestPath = New Microsoft.Owin.PathString("/html")})
+        app.UseFileServer(New FileServerOptions() With {.FileSystem = New PhysicalFileSystem(GetScriptsDirectory()), .EnableDirectoryBrowsing = True, .RequestPath = New Microsoft.Owin.PathString("/scripts")})
         app.UseCors(CorsOptions.AllowAll)
         app.MapSignalR()
     End Sub
