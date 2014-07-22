@@ -5,7 +5,10 @@ Imports Microsoft.Owin.Hosting
 Imports Owin
 Imports Microsoft.Owin.Cors
 Imports System.Threading
-
+Imports Microsoft.Owin.StaticFiles
+Imports Microsoft.Owin.FileSystems
+Imports System.IO
+Imports System.Diagnostics.Contracts
 
 Public Class frmServer
     'Const SERVERURL As String = "http://localhost:8080"
@@ -27,6 +30,27 @@ Public Class frmServer
         WriteToConsole("Server Started @ " & SERVERURL)
         Debug.Print("Running..." & Thread.CurrentThread.ManagedThreadId.ToString & "|" & Me.Name)
     End Sub
+
+    Private Sub Init2()
+        Try
+            Dim root = AppDomain.CurrentDomain.BaseDirectory
+            Dim filesystem = New PhysicalFileSystem(root)
+            Dim options As New FileServerOptions
+
+            options.EnableDirectoryBrowsing = True
+            options.FileSystem = filesystem
+            options.RequestPath = New Microsoft.Owin.PathString("/html")
+
+            WebApp.Start(SERVERURL, Function(builder) builder.UseFileServer(options))
+            'WebApp.Start(SERVERURL)
+        Catch ex As Exception
+            MsgBox("Server Failed To Start")
+            Exit Sub
+        End Try
+        WriteToConsole("Server Started @ " & SERVERURL)
+    End Sub
+
+
 
     Public Sub WriteToConsole(message As String)
         If Me.InvokeRequired Then
@@ -50,7 +74,7 @@ Public Class frmServer
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         SendToClients("From Server", "https://pbs.twimg.com/profile_images/415128901115867137/j5SIBgWo.jpeg")
 
-        
+
 
 
     End Sub
@@ -71,9 +95,29 @@ End Class
 
 Class Startup
     Public Sub Configuration(app As IAppBuilder)
+
+        'app.UseFileServer(New FileServerOptions() With {.FileSystem = New PhysicalFileSystem(GetRootDirectory()), .EnableDirectoryBrowsing = True, .RequestPath = New Microsoft.Owin.PathString("/html")})
+
         app.UseCors(CorsOptions.AllowAll)
         app.MapSignalR()
     End Sub
+
+
+    Private Shared Function GetRootDirectory() As String
+        Dim currentDirectory = Directory.GetCurrentDirectory()
+        Dim rootDirectory = Directory.GetParent(currentDirectory).Parent
+        Contract.Assume(rootDirectory IsNot Nothing)
+        Return Path.Combine(rootDirectory.FullName, "WebContent")
+    End Function
+
+    Private Shared Function GetScriptsDirectory() As String
+        Dim currentDirectory = Directory.GetCurrentDirectory()
+        Dim rootDirectory = Directory.GetParent(currentDirectory).Parent
+        Contract.Assume(rootDirectory IsNot Nothing)
+        Return Path.Combine(rootDirectory.FullName, "Scripts")
+    End Function
+
+
 End Class
 
 Public Class MyHub
