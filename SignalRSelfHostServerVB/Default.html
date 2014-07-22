@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <pre style="font-family: Consolas; font-size: 13; color: black; background: white;">1.&nbsp;Make&nbsp;sure&nbsp;one&nbsp;Sets&nbsp;the&nbsp;web&nbsp;page&nbsp;(Default.html)&nbsp;As&nbsp;the&nbsp;default&nbsp;Web&nbsp;Page.
+2.&nbsp;Check&nbsp;Javascript&nbsp;Library&nbsp;matches&nbsp;on&nbsp;web&nbsp;page
+3.&nbsp;On&nbsp;Katana/SignalR&nbsp;Server,&nbsp;use&nbsp;Manage&nbsp;NuGet&nbsp;Packages&nbsp;to&nbsp;&quot;UPDATE&quot;&nbsp;Microsoft.Owin&nbsp;and&nbsp;Microsoft.Owin.Security&nbsp;to&nbsp;versions&nbsp;2.1.
+4.&nbsp;Manually&nbsp;update&nbsp;the&nbsp;app.config&nbsp;as&nbsp;suggested&nbsp;here&nbsp;-&nbsp;updating&nbsp;2.0.2.0&nbsp;to&nbsp;whatever&nbsp;version&nbsp;you&nbsp;actuall&nbsp;have&nbsp;(like&nbsp;2.1.0.0)
+&lt;runtime&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;assemblyBinding&nbsp;xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependentAssembly&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;assemblyIdentity&nbsp;name=&quot;Microsoft.Owin&quot;&nbsp;publicKeyToken=&quot;31bf3856ad364e35&quot;&nbsp;culture=&quot;neutral&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;bindingRedirect&nbsp;oldVersion=&quot;0.0.0.0-2.0.2.0&quot;&nbsp;newVersion=&quot;2.0.2.0&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependentAssembly&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependentAssembly&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;assemblyIdentity&nbsp;name=&quot;Microsoft.Owin.Security&quot;&nbsp;publicKeyToken=&quot;31bf3856ad364e35&quot;&nbsp;culture=&quot;neutral&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;bindingRedirect&nbsp;oldVersion=&quot;0.0.0.0-2.0.2.0&quot;&nbsp;newVersion=&quot;2.0.2.0&quot;&nbsp;/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependentAssembly&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/assemblyBinding&gt;
+&nbsp;&nbsp;&lt;/runtime&gt;
+&nbsp;&nbsp;5.&nbsp;Run&nbsp;vs2013&nbsp;as&nbsp;admin!</pre>
+
+</body>
+</html>

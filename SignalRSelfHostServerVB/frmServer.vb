@@ -8,7 +8,8 @@ Imports System.Threading
 
 
 Public Class frmServer
-    Const SERVERURL As String = "http://localhost:8080"
+    'Const SERVERURL As String = "http://localhost:8080"
+    Const SERVERURL As String = "http://+:8080"
     Private SignalR As IDisposable
     Private Delegate Sub UpdateTxt(message As String)
     'Private Shared ReadOnly _instance As New Lazy(Of StockTicker)(Function() New StockTicker(GlobalHost.ConnectionManager.GetHubContext(Of StockTickerHub)().Clients))

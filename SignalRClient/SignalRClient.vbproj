@@ -83,6 +83,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configuration Notes.txt" />
     <Content Include="Default.html" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
